@@ -1,6 +1,6 @@
 # /init 통합 가이드
 
-Claude Code의 `/init` 명령어 실행 후, 이 템플릿의 규칙 시스템과 통합하는 방법입니다.
+Claude Code의 `/init` 명령어와 이 템플릿 규칙 시스템을 함께 사용하는 방법입니다.
 
 ---
 
@@ -14,60 +14,73 @@ Claude Code의 `/init` 명령어 실행 후, 이 템플릿의 규칙 시스템�
 **자동 수행:**
 - 프로젝트 구조 분석
 - 기술 스택 감지
-- `.claude/context.md` 자동 생성
+- **루트에 `CLAUDE.md` 파일 생성** ← 중요!
 - 프로젝트 개요 작성
 
-**생성되는 내용:**
+**생성되는 파일:**
+- `CLAUDE.md` (프로젝트 루트)
+
+**포함 내용:**
 - 프로젝트 설명
+- 빌드/테스트 명령어
 - 디렉토리 구조
-- 주요 파일 설명
+- 아키텍처 설명
 - 기술 스택 정보
 
 ---
 
-## 🔄 통합 전략
+## 🎯 권장 워크플로우 (템플릿 우선)
 
-### 시나리오 1: /init 먼저 실행
-
-```bash
-# 1. 새 프로젝트에서 /init 실행
-cd your-project
-# Claude Code에서: /init
-
-# 2. 생성된 context.md 백업
-cp .claude/context.md .claude/context.md.init-backup
-
-# 3. 템플릿 병합
-# 수동으로 병합 또는 아래 방법 사용
-```
-
-**병합 방법:**
-
-**Option A: 수동 병합 (권장)**
-1. `/init`이 생성한 프로젝트 정보 유지
-2. 템플릿의 "규칙 추가 프로세스" 섹션 추가
-3. 템플릿의 "태그 시스템" 섹션 추가
-4. 템플릿의 "키워드 매칭" 테이블 추가
-
-**Option B: 템플릿 우선**
-1. 템플릿 복사
-2. `/init` 백업에서 프로젝트 정보만 복사
-3. "프로젝트 정보" 섹션에 붙여넣기
-
-### 시나리오 2: 템플릿 먼저 사용
+### Step 1: 템플릿 복사
 
 ```bash
-# 1. 템플릿 복사
-cp claude-template/context.md.template your-project/.claude/context.md
-cp -r claude-template/info your-project/.claude/info
-
-# 2. 프로젝트 정보 수동 입력
-# context.md의 "프로젝트 정보" 섹션 작성
-
-# 3. (선택) /init으로 검증
-# Claude Code에서: /init
-# → /init 결과와 비교하여 누락된 정보 추가
+# 프로젝트 루트에서
+mkdir -p .claude
+cp claude-template/context.md.template .claude/context.md
+cp -r claude-template/info .claude/info
 ```
+
+**결과:**
+- `.claude/context.md` - 규칙 시스템 준비 ✅
+- `.claude/info/` - 전역 규칙 포함 ✅
+
+### Step 2: /init 실행
+
+```bash
+# Claude Code에서
+/init
+```
+
+**결과:**
+- `CLAUDE.md` (루트에 생성됨)
+- 코드베이스 분석 내용 포함
+
+### Step 3: CLAUDE.md 처리 (자동화)
+
+**규칙 시스템이 자동으로 처리:**
+
+1. **CLAUDE.md 읽기**
+2. **내용을 `.claude/info/codebase-overview.md`로 이동**
+   ```bash
+   # Claude가 자동으로 수행
+   mv CLAUDE.md .claude/info/codebase-overview.md
+   ```
+3. **context.md에 태그 추가** (필요시)
+   ```markdown
+   ### [코드베이스]
+   - `.claude/info/codebase-overview.md` - 프로젝트 구조 및 빌드 방법
+   ```
+
+### Step 4: 프로젝트 정보 입력
+
+`.claude/context.md` 수정:
+```markdown
+**프로젝트명:** [입력]
+**설명:** [입력]
+**기술 스택:** [입력]
+```
+
+**팁:** `codebase-overview.md`에서 복사 가능!
 
 ---
 
