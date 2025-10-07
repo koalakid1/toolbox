@@ -21,10 +21,13 @@ claude-template/
 
 ```bash
 # 프로젝트 루트에 .claude 폴더 생성
-mkdir -p your-project/.claude/info
+mkdir -p your-project/.claude
 
 # 템플릿 복사
 cp claude-template/context.md.template your-project/.claude/context.md
+
+# info 폴더 복사 (전역 규칙 포함)
+cp -r claude-template/info your-project/.claude/info
 
 # (선택) 가이드 복사
 cp claude-template/RULE-SYSTEM-GUIDE.md your-project/.claude/

@@ -16,6 +16,9 @@
 ```
 claude-template/
 ├── context.md.template      # 프로젝트 컨텍스트 템플릿
+├── info/                    # 전역 규칙 파일들
+│   ├── README.md            # info 폴더 사용법
+│   └── init-integration-guide.md  # /init 통합 가이드
 ├── README.md                # 템플릿 사용법
 └── RULE-SYSTEM-GUIDE.md     # 규칙 시스템 상세 가이드
 ```
@@ -47,6 +50,59 @@ claude-template/
 - 템플릿 업데이트 방법
 - 템플릿 수정 규칙
 - 이런 내용은 toolbox/.claude/에서 관리
+
+---
+
+## 📂 info/ 폴더 관리
+
+### info/ 폴더의 역할
+
+**전역 규칙 저장소:**
+- 모든 프로젝트에 공통 적용되는 규칙
+- `/init` 통합 가이드
+- 프로젝트 시작 시 함께 복사됨
+
+### 새 규칙을 info/에 추가할 기준
+
+**✅ info/에 추가해야 할 경우:**
+- 모든 프로젝트에 적용 가능한 전역 가이드
+- `/init` 같은 Claude Code 기본 기능 통합
+- 프로젝트 무관한 규칙 시스템 확장
+
+**예시:**
+- `init-integration-guide.md` - /init 통합 (전역)
+- `context-structure-guide.md` - context.md 구조 설명 (전역)
+
+**❌ info/에 추가하면 안 되는 경우:**
+- 특정 기술 스택 규칙 (React, Spring 등)
+- 특정 프로젝트 패턴 (toolbox의 bash 등)
+
+**올바른 위치:**
+- 개별 프로젝트의 `.claude/info/`에 추가
+
+### info/ 파일 추가 절차
+
+**1. 전역 규칙 확인:**
+```
+Q: 이것이 모든 프로젝트에 필요한가?
+   YES → claude-template/info/에 추가
+   NO → 개별 프로젝트 .claude/info/에 추가
+```
+
+**2. 파일 생성:**
+```bash
+# 파일명 규칙: 소문자-하이픈.md
+vim claude-template/info/{규칙명}.md
+```
+
+**3. 템플릿 사용법 업데이트:**
+```bash
+# README.md에 새 파일 설명 추가
+vim claude-template/README.md
+```
+
+**4. (선택) context.md.template 태그 추가:**
+필요시 기본 태그로 제공
 
 ---
 
