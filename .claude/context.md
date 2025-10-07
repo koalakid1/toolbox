@@ -1,14 +1,129 @@
 # koalakid-toolbox Context
 
-개발 작업에 필요한 자동화 스크립트 및 도구 모음
+> 📌 Template Version: 1.0.0 (기반: ~/github/koalakid1/toolbox/claude-template/)
 
 ---
 
-## ⚠️ 중요: 파일 수정 시 필수 규칙
+## 📋 프로젝트 정보
+
+**프로젝트명:** koalakid-toolbox
+**설명:** 개발 작업에 필요한 자동화 스크립트 및 도구 모음
+**기술 스택:** Bash, Git, SSH, GPG, fzf
+
+---
+
+## 🏷️ 프로세스별 필수 참고 문서
+
+작업 시 태그 사용하면 관련 문서 자동 참조
+
+### [스크립트 수정]
+- `.claude/info/bash-patterns.md` - Bash 스크립트 패턴 및 규칙
+
+---
+
+## 🔍 규칙 추가 프로세스
+
+### 명령어
+
+```
+[규칙 추가] {카테고리} - {규칙 내용}
+```
+
+### 자동 실행
+
+#### 1단계: 중복 체크
+- 키워드 추출 및 기존 파일 비교
+- 유사도 50%+ 시 알림
+
+#### 2단계: 유사 규칙 발견 시
+
+```
+⚠️ 유사한 규칙이 이미 존재합니다!
+
+기존: [{카테고리}] - .claude/info/{파일명}.md
+키워드 일치: "{키워드1}", "{키워드2}"
+
+📋 현재 규칙 요약:
+  • 항목 1
+  • 항목 2
+
+🆕 새로운 내용: "{규칙}"
+
+선택하세요:
+1️⃣ 기존 파일에 추가
+2️⃣ 새 파일 생성
+3️⃣ 취소
+```
+
+#### 3단계: 처리
+- **1️⃣**: 기존 파일 업데이트
+- **2️⃣**: 새 파일 생성 + context.md 태그 추가
+- **3️⃣**: 취소
+
+### 키워드 매칭
+
+| 카테고리 | 키워드 | 파일명 |
+|----------|--------|--------|
+| Git | git, commit, branch, merge, pr | git-*.md |
+| 코드 | code, function, class, refactor | coding-*.md |
+| 테스트 | test, jest, unit, e2e | testing-*.md |
+| 배포 | deploy, release, build, ci, cd | deployment-*.md |
+| 문서 | doc, readme, comment | documentation-*.md |
+| API | api, rest, graphql, endpoint | api-*.md |
+| DB | db, database, sql, query | database-*.md |
+| 보안 | security, auth, 인증, 권한 | security-*.md |
+| 스크립트 | bash, shell, script | bash-*.md, script-*.md |
+
+**유사도 판단:**
+- 키워드 2개+ 일치
+- 태그명 50%+ 유사
+- 파일명 패턴 일치
+
+---
+
+## 📌 추가 태그 시스템
+
+확장 가능한 태그 예시:
+
+### 작업 유형
+- `[추가]` - 새 기능
+- `[수정]` - 코드 수정
+- `[삭제]` - 코드 제거
+- `[리팩토링]` - 리팩토링
+
+### 우선순위
+- `[긴급]` - 긴급
+- `[중요]` - 중요
+- `[일반]` - 일반
+
+---
+
+## 📂 프로젝트 구조
+
+```
+toolbox/
+├── .claude/                    # toolbox 전용 Claude 설정
+│   ├── context.md              # 이 파일 (자동 프롬프팅)
+│   ├── info/
+│   │   └── bash-patterns.md    # Bash 패턴
+│   ├── README.md
+│   └── RULE-SYSTEM-GUIDE.md
+├── claude-template/            # 전역 템플릿 (재사용)
+│   ├── context.md.template
+│   ├── README.md
+│   └── RULE-SYSTEM-GUIDE.md
+├── git/                        # GitHub 멀티 계정 관리
+│   ├── *.sh                    # 스크립트
+│   ├── *.claude.md             # 기술 문서
+│   └── *.md                    # 사용자 가이드
+└── README.md
+```
+
+---
+
+## ⚠️ 파일 수정 시 필수 규칙
 
 ### 스크립트 수정 전 반드시 참고 문서 읽기
-
-각 스크립트를 수정하기 전에 **반드시** 해당 `.claude.md` 파일을 먼저 읽어야 합니다.
 
 | 수정 대상 | 필수 참고 문서 |
 |-----------|----------------|
@@ -17,27 +132,10 @@
 | `git/install-required-tools.sh` | `git/install-required-tools.claude.md` |
 
 **이유:**
-- 스크립트의 의도와 전체 흐름 파악
+- 스크립트 의도 및 전체 흐름 파악
 - 에러 처리 로직 이해
 - 기존 패턴 유지
 - 사이드 이펙트 방지
-
----
-
-## 📂 프로젝트 구조
-
-```
-toolbox/
-├── .claude/
-│   ├── context.md          # 이 파일 (자동 프롬프팅)
-│   └── README.md           # .claude 폴더 설명
-├── README.md               # toolbox 소개
-└── git/                    # GitHub 멀티 계정 관리 도구
-    ├── README.md           # 사용자용 가이드
-    ├── *.sh                # 실행 스크립트
-    ├── *.claude.md         # 개발자/AI용 상세 기술 문서
-    └── *_GUIDE.md          # 사용자용 상세 가이드
-```
 
 ---
 
@@ -59,56 +157,34 @@ GitHub 멀티 계정 환경에서 계정별 SSH/GPG 키 관리 및 레포지토�
 
 ---
 
-## 💻 코딩 규칙
+## 💻 주요 코딩 규칙
 
 ### Bash 스크립트
 
-#### fzf 파이프라인
+상세 내용: `.claude/info/bash-patterns.md`
+
+**핵심 패턴:**
 ```bash
-# ✅ 올바른 패턴
+# ✅ fzf 파이프라인
 selected=$({ printf '%s\n' "${array[@]}"; echo "옵션"; } | fzf)
 
-# ❌ 잘못된 패턴 (배열이 제대로 전달 안 됨)
-selected=$(printf '%s\n' "${array[@]}" && echo "옵션" | fzf)
-```
+# ✅ 경로
+base_dir="$HOME/github"  # $HOME 사용
 
-#### 경로 사용
-```bash
-# 항상 $HOME 사용 (현재 위치 무관)
-github_base="$HOME/github"
-
-# 상대 경로 사용 금지
-github_base="~/github"  # ❌
-```
-
-#### 배열 처리
-```bash
-# mapfile 사용
-mapfile -t accounts < <(find "$github_base" -maxdepth 1 -mindepth 1 -type d -exec basename {} \; 2>/dev/null | sort)
-
-# 배열 순회
-for account in "${accounts[@]}"; do
-    echo "$account"
-done
+# ✅ 배열
+mapfile -t arr < <(command)
+for item in "${arr[@]}"; do ...; done
 ```
 
 ### Git 설정
 
-#### URL 재작성 (insteadOf)
-`~/.gitconfig-{username}`:
+**URL 재작성 (insteadOf):**
 ```ini
 [url "git@github-{username}:"]
     insteadOf = git@github.com:
 ```
 
-실제 동작:
-```bash
-git clone git@github.com:user/repo.git
-# → git@github-{username}:user/repo.git 으로 자동 변환
-```
-
-#### includeIf (폴더별 계정 전환)
-`~/.gitconfig`:
+**includeIf (폴더별 계정 전환):**
 ```ini
 [includeIf "gitdir:~/github/{username}/"]
     path = ~/.gitconfig-{username}
@@ -127,17 +203,13 @@ git clone git@github.com:user/repo.git
    - 이전 단계 돌아가기
    - 중복 방지
 
-### 주의사항
-- fzf는 대화형이므로 자동 테스트 불가
-- 타임아웃 고려 (`inappropriate ioctl for device` 에러)
-
 ---
 
 ## 📝 문서 구조
 
 ### 사용자용 vs 개발자용
 
-**사용자용** (일반 README, GUIDE):
+**사용자용** (README, GUIDE):
 - 사용법 중심
 - 예시와 스크린샷
 - 트러블슈팅
@@ -152,21 +224,13 @@ git clone git@github.com:user/repo.git
 
 ## 🎯 작업 흐름
 
-사용자 요청 → `.claude/context.md` 자동 읽음 (이 파일) → 해당 `.claude.md` 읽기 → 정확한 수정
+사용자 요청 → `context.md` 자동 읽음 (이 파일) → 해당 `.claude.md` 읽기 → 정확한 수정
 
 **예시:**
-1. 사용자: "clone-repo.sh에 브랜치 선택 기능 추가해줘"
+1. 사용자: "clone-repo.sh에 브랜치 선택 기능 추가"
 2. Claude: context.md 확인 → "clone-repo.claude.md를 먼저 읽어야 함"
 3. Claude: `git/clone-repo.claude.md` 읽기
 4. Claude: 기존 로직 이해 후 정확한 위치에 기능 추가
-
----
-
-## 🔐 보안 주의사항
-
-- 개인키(`id_ed25519_*`) 절대 커밋 금지
-- GPG 개인키 백업 권장
-- `.gitignore`에 SSH/GPG 키 경로 추가 불필요 (홈 디렉토리에 위치)
 
 ---
 

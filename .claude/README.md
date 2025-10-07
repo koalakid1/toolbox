@@ -174,6 +174,14 @@ Claude가 자동으로 해당 `.claude.md`를 읽게 됩니다!
 
 ---
 
+## 📚 추가 문서
+
+- **RULE-SYSTEM-GUIDE.md** - 규칙 시스템 상세 사용법 (필독!)
+  - `[규칙 추가]` 명령어 사용법
+  - 중복 규칙 체크 프로세스
+  - 실제 사용 예시
+  - 새 프로젝트 적용 방법
+
 ## 📌 참고
 
 - **Claude Code 공식 문서**: https://docs.claude.com/en/docs/claude-code
