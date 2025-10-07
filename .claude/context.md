@@ -22,6 +22,9 @@
 ### [도구 추가]
 - `.claude/info/toolbox-folder-management.md` - Toolbox 폴더 관리 규칙
 
+### [템플릿 관리]
+- `.claude/info/claude-template-management.md` - Claude Template 관리 규칙
+
 ---
 
 ## 🔍 규칙 추가 프로세스
