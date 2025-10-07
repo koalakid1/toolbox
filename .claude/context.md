@@ -19,6 +19,9 @@
 ### [스크립트 수정]
 - `.claude/info/bash-patterns.md` - Bash 스크립트 패턴 및 규칙
 
+### [도구 추가]
+- `.claude/info/toolbox-folder-management.md` - Toolbox 폴더 관리 규칙
+
 ---
 
 ## 🔍 규칙 추가 프로세스
