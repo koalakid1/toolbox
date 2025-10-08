@@ -1,0 +1,40 @@
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+*.bak
+*.backup
+*~
+
+# Sensitive data
+*.key
+*.pem
+*.gpg
+.env
+.env.local
+secrets/
+credentials/
+
+# Claude backup files
+*.backup-*
+.claude.backup-*
+
+# Test output
+test-output/
+*.test.log
