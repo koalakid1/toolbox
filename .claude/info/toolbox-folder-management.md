@@ -80,11 +80,11 @@ Docker 환경 설정 및 컨테이너 관리 도구
 
 ---
 
-## 🏷️ .claude/context.md 업데이트
+## 🏷️ CLAUDE.md 업데이트
 
 ### 4. 태그 추가 (필요시)
 
-**파일:** `toolbox/.claude/context.md`
+**파일:** `toolbox/CLAUDE.md`
 
 **추가 위치:** "프로세스별 필수 참고 문서" 섹션
 
@@ -102,7 +102,7 @@ Docker 환경 설정 및 컨테이너 관리 도구
 
 ### 5. 도구 목록 업데이트
 
-**파일:** `toolbox/.claude/context.md`
+**파일:** `toolbox/CLAUDE.md`
 
 **추가 위치:** "향후 추가 예정" 섹션을 "도구 목록"으로 변경
 
@@ -151,7 +151,7 @@ Docker 환경 설정 및 컨테이너 관리 도구
 - [ ] 기술 문서: `{tool-name}/*.claude.md`
 - [ ] 사용자 가이드: `{tool-name}/README.md`
 - [ ] **toolbox/README.md** 업데이트 (도구 설명 추가)
-- [ ] **.claude/context.md** 업데이트
+- [ ] **CLAUDE.md** 업데이트
   - [ ] 태그 추가 (필요시)
   - [ ] 도구 목록 업데이트
 - [ ] `.claude/info/{tool}-rules.md` 생성 (선택)
@@ -191,7 +191,7 @@ GitHub 멀티 계정 관리 및 레포지토리 자동 클론 도구
 **📖 [자세히 보기](git/README.md)**
 ```
 
-**.claude/context.md:**
+**CLAUDE.md:**
 ```markdown
 ### [스크립트 수정]
 - `.claude/info/bash-patterns.md` - Bash 스크립트 패턴 및 규칙
@@ -215,7 +215,7 @@ GitHub 멀티 계정 관리 및 레포지토리 자동 클론 도구
 
 다음을 자동으로 수행해주세요:
 1. toolbox/README.md 업데이트
-2. .claude/context.md 업데이트
+2. CLAUDE.md 업데이트
 3. 필요시 규칙 파일 생성
 ```
 
@@ -229,7 +229,7 @@ Claude가 이 규칙 파일을 참고하여 자동으로 모든 문서를 업데
 
 1. 폴더 삭제: `rm -rf toolbox/{tool-name}`
 2. `toolbox/README.md`에서 도구 섹션 제거
-3. `.claude/context.md`에서 태그 및 목록 제거
+3. `CLAUDE.md`에서 태그 및 목록 제거
 4. `.claude/info/{tool}-rules.md` 삭제 (있다면)
 
 ### 도구 업데이트 시

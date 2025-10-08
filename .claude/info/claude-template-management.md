@@ -15,7 +15,7 @@
 
 ```
 claude-template/
-├── context.md.template      # 프로젝트 컨텍스트 템플릿
+├── CLAUDE.md.template       # 프로젝트 컨텍스트 템플릿 (자동 프롬프팅)
 ├── info/                    # 전역 규칙 파일들
 │   ├── README.md            # info 폴더 사용법
 │   └── init-integration-guide.md  # /init 통합 가이드
@@ -71,7 +71,7 @@ claude-template/
 
 **예시:**
 - `init-integration-guide.md` - /init 통합 (전역)
-- `context-structure-guide.md` - context.md 구조 설명 (전역)
+- `CLAUDE-structure-guide.md` - CLAUDE.md 구조 설명 (전역)
 
 **❌ info/에 추가하면 안 되는 경우:**
 - 특정 기술 스택 규칙 (React, Spring 등)
@@ -101,7 +101,7 @@ vim claude-template/info/{규칙명}.md
 vim claude-template/README.md
 ```
 
-**4. (선택) context.md.template 태그 추가:**
+**4. (선택) CLAUDE.md.template 태그 추가:**
 필요시 기본 태그로 제공
 
 ---
@@ -117,7 +117,7 @@ vim claude-template/README.md
 ```
 
 **작업:**
-1. `claude-template/context.md.template` 수정
+1. `claude-template/CLAUDE.md.template` 수정
 2. "추가 태그 시스템" 섹션에 추가
 3. 필요시 키워드 매칭 테이블 업데이트
 
@@ -128,7 +128,7 @@ vim claude-template/README.md
 - 새로운 유사도 판단 기준 추가
 
 **작업:**
-1. `claude-template/context.md.template` 수정
+1. `claude-template/CLAUDE.md.template` 수정
 2. "규칙 추가 프로세스" 섹션 업데이트
 3. `RULE-SYSTEM-GUIDE.md`도 함께 업데이트
 
@@ -141,7 +141,7 @@ vim claude-template/README.md
 ```
 
 **작업:**
-1. `claude-template/context.md.template` 수정
+1. `claude-template/CLAUDE.md.template` 수정
 2. "키워드 매칭" 테이블에 추가
 
 ---
@@ -160,8 +160,8 @@ vim claude-template/README.md
 ### Step 2: 파일 수정
 
 ```bash
-# context.md.template 수정
-vim claude-template/context.md.template
+# CLAUDE.md.template 수정
+vim claude-template/CLAUDE.md.template
 
 # 필요시 README, GUIDE도 업데이트
 vim claude-template/README.md
@@ -181,7 +181,7 @@ vim claude-template/RULE-SYSTEM-GUIDE.md
 ### Step 4: 버전 업데이트
 
 ```markdown
-# context.md.template 상단
+# CLAUDE.md.template 상단
 > 📌 Template Version: 1.1.0
 ```
 
@@ -207,7 +207,7 @@ vim claude-template/RULE-SYSTEM-GUIDE.md
 - [ ] README.md에 사용법이 잘 설명되어 있는가?
 
 ### 문서 일관성
-- [ ] context.md.template, README.md, RULE-SYSTEM-GUIDE.md가 일치하는가?
+- [ ] CLAUDE.md.template, README.md, RULE-SYSTEM-GUIDE.md가 일치하는가?
 - [ ] 예시가 실제 동작과 일치하는가?
 
 ---
@@ -220,7 +220,8 @@ vim claude-template/RULE-SYSTEM-GUIDE.md
 1. 새 프로젝트 시작
    ↓
 2. claude-template/ 복사
-   cp context.md.template new-project/.claude/context.md
+   cp CLAUDE.md.template new-project/CLAUDE.md
+   cp -r info/* new-project/.claude/info/
    ↓
 3. 프로젝트 정보 입력
    - 프로젝트명, 설명, 기술 스택
@@ -242,7 +243,7 @@ vim claude-template/RULE-SYSTEM-GUIDE.md
 
 **작업:**
 ```markdown
-# claude-template/context.md.template
+# claude-template/CLAUDE.md.template
 
 ## 📌 추가 태그 시스템
 
@@ -273,12 +274,12 @@ vim claude-template/RULE-SYSTEM-GUIDE.md
 ## 🔗 관련 파일
 
 ### toolbox 내부
-- `.claude/context.md` - toolbox 전용 컨텍스트
+- `CLAUDE.md` - toolbox 전용 컨텍스트 (자동 프롬프팅)
 - `.claude/info/toolbox-folder-management.md` - 도구 추가 규칙
 - `.claude/info/bash-patterns.md` - Bash 패턴 (toolbox 전용)
 
 ### 템플릿
-- `claude-template/context.md.template` - 순수 템플릿
+- `claude-template/CLAUDE.md.template` - 순수 템플릿
 - `claude-template/README.md` - 사용법
 - `claude-template/RULE-SYSTEM-GUIDE.md` - 상세 가이드
 

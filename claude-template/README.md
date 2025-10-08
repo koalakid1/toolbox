@@ -8,7 +8,10 @@
 
 ```
 claude-template/
-├── context.md.template      # 프로젝트 컨텍스트 템플릿
+├── CLAUDE.md.template       # 프로젝트 컨텍스트 템플릿 (자동 프롬프팅)
+├── info/                    # 전역 규칙 파일들
+│   ├── README.md
+│   └── init-integration-guide.md
 ├── README.md                # 이 파일 (템플릿 사용법)
 └── RULE-SYSTEM-GUIDE.md     # 규칙 시스템 완전 가이드
 ```
@@ -17,17 +20,32 @@ claude-template/
 
 ## 🚀 빠른 시작
 
-### 1. 새 프로젝트에 적용
+### 방법 1: 자동 설치 (권장)
+
+Claude Code에서 다음 명령어 입력:
+
+```
+[템플릿 설치] ~/your-project/path
+```
+
+**자동 실행:**
+- ✅ `.claude/` 폴더 생성
+- ✅ 템플릿 파일 복사
+- ✅ 경로 검증 및 에러 처리
+- ✅ 설치 후 가이드 제공
+
+### 방법 2: 수동 설치
 
 ```bash
 # 프로젝트 루트에 .claude 폴더 생성
 mkdir -p your-project/.claude
 
 # 템플릿 복사
-cp claude-template/context.md.template your-project/.claude/context.md
+cp claude-template/CLAUDE.md.template your-project/CLAUDE.md
 
 # info 폴더 복사 (전역 규칙 포함)
-cp -r claude-template/info your-project/.claude/info
+mkdir -p your-project/.claude/info
+cp -r claude-template/info/* your-project/.claude/info/
 
 # (선택) 가이드 복사
 cp claude-template/RULE-SYSTEM-GUIDE.md your-project/.claude/
@@ -35,7 +53,7 @@ cp claude-template/RULE-SYSTEM-GUIDE.md your-project/.claude/
 
 ### 2. 프로젝트 정보 수정
 
-`your-project/.claude/context.md` 파일 열어서:
+`your-project/CLAUDE.md` 파일 열어서:
 - 프로젝트명, 설명, 기술 스택 입력
 - 주석(`<!--`) 처리된 예시 제거
 - 프로젝트별 내용 추가
@@ -71,7 +89,9 @@ cp claude-template/RULE-SYSTEM-GUIDE.md your-project/.claude/
 
 ```bash
 # 1. 템플릿 복사
-cp -r claude-template/context.md.template my-spring/.claude/context.md
+cp claude-template/CLAUDE.md.template my-spring/CLAUDE.md
+mkdir -p my-spring/.claude/info
+cp -r claude-template/info/* my-spring/.claude/info/
 
 # 2. 프로젝트 정보 입력
 # - 프로젝트명: My Spring App
@@ -87,7 +107,9 @@ cp -r claude-template/context.md.template my-spring/.claude/context.md
 
 ```bash
 # 1. 템플릿 복사
-cp -r claude-template/context.md.template my-react/.claude/context.md
+cp claude-template/CLAUDE.md.template my-react/CLAUDE.md
+mkdir -p my-react/.claude/info
+cp -r claude-template/info/* my-react/.claude/info/
 
 # 2. React 규칙 추가
 [규칙 추가] React - 모든 컴포넌트는 함수형으로 작성
@@ -99,7 +121,9 @@ cp -r claude-template/context.md.template my-react/.claude/context.md
 
 ```bash
 # toolbox 같은 경우
-cp -r claude-template/context.md.template toolbox/.claude/context.md
+cp claude-template/CLAUDE.md.template toolbox/CLAUDE.md
+mkdir -p toolbox/.claude/info
+cp -r claude-template/info/* toolbox/.claude/info/
 
 # Bash 규칙 추가
 [규칙 추가] 스크립트 - fzf 파이프라인은 { } 그룹 명령 사용
@@ -114,7 +138,7 @@ cp -r claude-template/context.md.template toolbox/.claude/context.md
 
 템플릿에 새 태그나 규칙 추가:
 
-1. `claude-template/context.md.template` 수정
+1. `claude-template/CLAUDE.md.template` 수정
 2. 기존 프로젝트에 수동 반영 (필요시)
 
 **예시: `[추가]`, `[수정]` 태그 추가**
@@ -140,13 +164,14 @@ cp -r claude-template/context.md.template toolbox/.claude/context.md
 
 ### 프로젝트별 파일 (복사 후 생성)
 ```
-your-project/.claude/
-├── context.md              # 템플릿에서 복사 + 프로젝트 내용 추가
-├── info/                   # 프로젝트별 규칙 파일들
-│   ├── coding-rules.md
-│   ├── git-workflow.md
-│   └── ...
-└── RULE-SYSTEM-GUIDE.md    # (선택) 가이드 복사
+your-project/
+├── CLAUDE.md               # 템플릿에서 복사 + 프로젝트 내용 추가 (자동 프롬프팅)
+└── .claude/
+    ├── info/               # 프로젝트별 규칙 파일들
+    │   ├── coding-rules.md
+    │   ├── git-workflow.md
+    │   └── ...
+    └── RULE-SYSTEM-GUIDE.md    # (선택) 가이드 복사
 ```
 
 ---
@@ -160,8 +185,8 @@ your-project/.claude/
 - 전역 태그 시스템, 프로세스만 템플릿에 포함
 
 **2. 프로젝트별 커스터마이징**
-- context.md에 프로젝트 특화 내용 추가
-- info/ 폴더에 상세 규칙 파일 생성
+- CLAUDE.md에 프로젝트 특화 내용 추가
+- .claude/info/ 폴더에 상세 규칙 파일 생성
 
 **3. 일관성 유지**
 - 모든 프로젝트에서 같은 태그 형식 사용
@@ -171,7 +196,7 @@ your-project/.claude/
 
 **1. 템플릿에 프로젝트 규칙 추가**
 ```markdown
-# ❌ 나쁜 예: context.md.template에 추가
+# ❌ 나쁜 예: CLAUDE.md.template에 추가
 [규칙 추가] Spring - @Transactional 사용법
 ```
 
@@ -194,11 +219,12 @@ your-project/.claude/
 
 ### Q1. 기존 프로젝트에 적용하려면?
 ```bash
-# 1. .claude 폴더 생성
-mkdir -p existing-project/.claude/info
+# 1. 템플릿 복사
+cp claude-template/CLAUDE.md.template existing-project/CLAUDE.md
 
-# 2. 템플릿 복사
-cp claude-template/context.md.template existing-project/.claude/context.md
+# 2. info 폴더 생성
+mkdir -p existing-project/.claude/info
+cp -r claude-template/info/* existing-project/.claude/info/
 
 # 3. 기존 규칙을 [규칙 추가]로 입력
 ```
@@ -208,7 +234,7 @@ cp claude-template/context.md.template existing-project/.claude/context.md
 - 또는 별도의 공통 규칙 파일 생성 후 각 프로젝트에서 참조
 
 ### Q3. 템플릿 업데이트 후 기존 프로젝트에 반영하려면?
-- 수동으로 context.md 비교 후 반영
+- 수동으로 CLAUDE.md 비교 후 반영
 - 또는 새 태그/프로세스만 복사
 
 ---

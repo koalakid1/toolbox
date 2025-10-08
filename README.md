@@ -33,14 +33,17 @@ GitHub 멀티 계정 관리 및 레포지토리 자동 클론 도구
 ```
 toolbox/
 ├── README.md               # 이 파일
-├── .claude/                # toolbox 전용 Claude 설정
-│   ├── context.md          # 자동 프롬프팅
-│   ├── info/               # 상세 규칙
-│   │   ├── bash-patterns.md
-│   │   └── toolbox-folder-management.md
-│   └── README.md
+├── CLAUDE.md               # 자동 프롬프팅 (toolbox 전용)
+├── .claude/                # toolbox 설정 및 규칙
+│   └── info/               # 상세 규칙
+│       ├── bash-patterns.md
+│       ├── toolbox-folder-management.md
+│       └── claude-template-management.md
 ├── claude-template/        # 재사용 가능한 Claude 템플릿
-│   ├── context.md.template
+│   ├── CLAUDE.md.template  # 템플릿 (자동 프롬프팅)
+│   ├── info/               # 전역 규칙
+│   │   ├── README.md
+│   │   └── init-integration-guide.md
 │   ├── README.md
 │   └── RULE-SYSTEM-GUIDE.md
 ├── git/                    # GitHub 멀티 계정 관리

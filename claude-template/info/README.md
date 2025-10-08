@@ -4,16 +4,42 @@
 
 ---
 
+## 🚀 [덮어쓰기] 명령어
+
+루트의 `CLAUDE.md`를 템플릿 규칙으로 덮어쓰거나 병합합니다.
+
+### 사용법
+
+```
+[덮어쓰기]
+```
+
+### 상세 설명
+
+`init-integration-guide.md` 파일을 참고하세요.
+
+**요약:**
+- `/init` 후 병합: 코드베이스 분석 + 템플릿 규칙
+- 템플릿만 사용: 순수 템플릿 규칙 복사
+
+---
+
 ## 📋 용도
 
-### context.md vs info/*.md
+### CLAUDE.md vs .claude/info/*.md
 
-**context.md:**
+**CLAUDE.md (루트):**
+- 자동 프롬프팅 (Claude가 자동으로 읽음)
 - 간결한 개요와 참조
 - 태그 정의
 - 규칙 프로세스 설명
 
-**info/*.md:**
+**.claude/CLAUDE.md.backup:**
+- 템플릿 규칙 백업 (보존용)
+- `/init`이나 수동 편집으로부터 보호됨
+- `[덮어쓰기]` 명령어의 소스
+
+**.claude/info/*.md:**
 - 상세한 규칙 내용
 - 구체적인 패턴
 - 예시 코드
@@ -56,21 +82,29 @@ Claude가 자동으로 `.claude/info/{카테고리}.md` 생성
 
 ## 🔄 프로젝트 시작 시
 
-### 1. 템플릿 복사
+### 1. 템플릿 설치
 
-```bash
-# context.md와 info/ 모두 복사
-cp claude-template/context.md.template your-project/.claude/context.md
-cp -r claude-template/info your-project/.claude/info
+```
+[템플릿 설치] ~/your-project
 ```
 
-### 2. 불필요한 파일 제거
+자동으로 다음 파일 생성:
+- `.claude/CLAUDE.md.backup` (템플릿 규칙)
+- `.claude/info/` (상세 규칙)
 
-프로젝트에 필요없는 규칙 파일 제거:
+### 2. CLAUDE.md 생성
 
-```bash
-# 예: /init 사용 안 하는 경우
-rm your-project/.claude/info/init-integration-guide.md
+**옵션 A: /init 사용 후 병합**
+```
+/init
+[덮어쓰기]
+→ 2️⃣ 병합
+```
+
+**옵션 B: 템플릿만 사용**
+```
+[덮어쓰기]
+→ 1️⃣ 덮어쓰기
 ```
 
 ### 3. 프로젝트별 규칙 추가
@@ -117,4 +151,5 @@ rm your-project/.claude/info/init-integration-guide.md
 ## 📌 참고
 
 - **RULE-SYSTEM-GUIDE.md** - 규칙 시스템 전체 가이드
-- **context.md** - 태그 정의 및 규칙 프로세스
+- **CLAUDE.md** (루트) - 자동 프롬프팅 파일
+- **.claude/CLAUDE.md.backup** - 템플릿 규칙 백업

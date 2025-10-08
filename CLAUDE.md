@@ -35,6 +35,93 @@
 [규칙 추가] {카테고리} - {규칙 내용}
 ```
 
+---
+
+## 🚀 템플릿 설치 프로세스
+
+### 명령어
+
+```
+[템플릿 설치] {프로젝트 경로}
+```
+
+**예시:**
+```
+[템플릿 설치] ~/github/koalakid1/my-new-project
+[템플릿 설치] /home/user/projects/web-app
+```
+
+### 자동 실행
+
+#### 1단계: 경로 검증
+- 절대 경로 확인 (`~` 또는 `/`로 시작)
+- 디렉토리 존재 확인 (없으면 생성 제안)
+- `.claude/` 폴더 존재 여부 확인 (이미 있으면 백업 제안)
+
+#### 2단계: 템플릿 복사
+```bash
+# 자동 실행되는 명령어들
+mkdir -p {프로젝트경로}/.claude/info
+cp ~/github/koalakid1/toolbox/claude-template/CLAUDE.md.backup {프로젝트경로}/.claude/CLAUDE.md.backup
+cp -r ~/github/koalakid1/toolbox/claude-template/info/* {프로젝트경로}/.claude/info/
+```
+
+#### 3단계: 설치 완료 안내
+```
+✅ 템플릿 설치 완료!
+
+📂 생성된 파일:
+  • {프로젝트경로}/.claude/CLAUDE.md.backup (템플릿 규칙)
+  • {프로젝트경로}/.claude/info/README.md
+  • {프로젝트경로}/.claude/info/init-integration-guide.md
+
+📝 다음 단계:
+
+옵션 A: /init 사용 후 병합
+1. /init 실행 (코드베이스 자동 분석 → CLAUDE.md 생성)
+2. [덮어쓰기] 입력
+3. 2️⃣ 병합 선택
+→ 결과: /init 분석 + 템플릿 규칙
+
+옵션 B: 템플릿만 사용
+1. [덮어쓰기] 입력
+2. 1️⃣ 덮어쓰기 선택
+3. 프로젝트 정보 입력
+→ 결과: 순수 템플릿 규칙
+
+💡 추가 규칙:
+   [규칙 추가] {카테고리} - {규칙 내용}
+```
+
+### 에러 처리
+
+**경로가 존재하지 않을 때:**
+```
+⚠️ 경로가 존재하지 않습니다: {경로}
+
+디렉토리를 생성하시겠습니까?
+1️⃣ 생성 후 템플릿 설치
+2️⃣ 취소
+
+→
+```
+
+**이미 .claude/ 폴더가 있을 때:**
+```
+⚠️ .claude 폴더가 이미 존재합니다!
+
+기존 파일:
+  • {프로젝트경로}/.claude/CLAUDE.md.backup
+  • {프로젝트경로}/.claude/info/
+
+선택하세요:
+1️⃣ 백업 후 덮어쓰기 (.claude.backup-{timestamp})
+2️⃣ 병합 (기존 유지 + 새 파일만 추가)
+3️⃣ 취소
+
+→
+```
+
 ### 자동 실행
 
 #### 1단계: 중복 체크
