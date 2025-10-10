@@ -2,6 +2,32 @@
 
 개발 작업에 필요한 자동화 스크립트 및 도구 모음
 
+## ⚡ 빠른 시작
+
+**~/.zshrc 또는 ~/.bashrc에 추가:**
+```bash
+source ~/github/koalakid1/toolbox/.aliases
+```
+
+**적용:**
+```bash
+source ~/.zshrc  # 또는 source ~/.bashrc
+```
+
+**사용 가능한 명령어:**
+```bash
+# Git
+gclone       # GitHub 레포지토리 클론
+gsetup       # GitHub 계정 설정
+
+# S3
+s3setup      # S3 설정 생성
+s3switch     # S3 설정 전환
+s3list       # S3 설정 목록
+s3rm         # S3 설정 삭제
+s3current    # 현재 활성 설정
+```
+
 ---
 
 ## 📦 포함된 도구

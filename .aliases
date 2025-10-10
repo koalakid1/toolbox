@@ -1,0 +1,32 @@
+# Toolbox 통합 Aliases
+# ~/.zshrc 또는 ~/.bashrc에 추가:
+# source ~/github/koalakid1/toolbox/.aliases
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# Git 멀티 계정 관리
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+# GitHub 레포지토리 클론 (대화형)
+alias gclone='~/github/koalakid1/toolbox/git/clone-repo.sh'
+
+# GitHub 계정 설정 (SSH/GPG 키 생성)
+alias gsetup='~/github/koalakid1/toolbox/git/setup-account.sh'
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# S3cmd 설정 관리
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+# S3 설정 생성
+alias s3setup='~/github/koalakid1/toolbox/s3cmd/setup-s3-config.sh'
+
+# S3 설정 전환
+alias s3switch='~/github/koalakid1/toolbox/s3cmd/switch-s3.sh'
+
+# S3 설정 목록
+alias s3list='~/github/koalakid1/toolbox/s3cmd/list-s3-configs.sh'
+
+# S3 설정 삭제
+alias s3rm='~/github/koalakid1/toolbox/s3cmd/remove-s3-config.sh'
+
+# 현재 활성 S3 설정 확인
+alias s3current='if [ -L ~/.s3cfg ]; then basename $(readlink ~/.s3cfg); else echo "활성 설정 없음"; fi'

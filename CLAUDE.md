@@ -252,6 +252,26 @@ GitHub 멀티 계정 환경에서 계정별 SSH/GPG 키 관리 및 레포지토�
 
 ## 💻 주요 코딩 규칙
 
+### 새 스크립트 추가 시 Alias 등록
+
+**규칙:** 새로운 `.sh` 스크립트를 추가할 때마다 사용자에게 alias 등록 여부를 물어본다.
+
+**프로세스:**
+1. 새 스크립트 작성 완료 후
+2. "이 스크립트를 `.aliases`에 추가하시겠습니까?" 질문
+3. Yes인 경우 `toolbox/.aliases`에 추가
+4. alias 이름은 사용자와 협의
+
+**예시:**
+```
+사용자: docker/ 폴더에 컨테이너 관리 스크립트 만들어줘
+Claude: (스크립트 작성 완료)
+        이 스크립트를 .aliases에 추가하시겠습니까?
+        추천 alias: dmanage
+사용자: ㅇㅇ
+Claude: (toolbox/.aliases에 추가)
+```
+
 ### Bash 스크립트
 
 상세 내용: `.claude/info/bash-patterns.md`
