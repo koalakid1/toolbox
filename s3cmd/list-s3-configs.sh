@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # S3 설정 목록 조회 스크립트
 # 사용법: ./list-s3-configs.sh

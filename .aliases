@@ -3,6 +3,25 @@
 # source ~/github/koalakid1/toolbox/.aliases
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# Homebrew PATH 설정 (아키텍처 자동 감지)
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+if [[ "$(uname -m)" == "arm64" ]]; then
+    # Apple Silicon Mac
+    [[ -d "/opt/homebrew/bin" ]] && export PATH="/opt/homebrew/bin:$PATH"
+else
+    # Intel Mac
+    [[ -d "/usr/local/bin" ]] && export PATH="/usr/local/bin:$PATH"
+fi
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# Toolbox 설정
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+# Toolbox 재설치/설정 스크립트
+alias toolbox='~/github/koalakid1/toolbox/setup-toolbox.sh'
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 # Git 멀티 계정 관리
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -11,6 +30,9 @@ alias gclone='~/github/koalakid1/toolbox/git/clone-repo.sh'
 
 # GitHub 계정 설정 (SSH/GPG 키 생성)
 alias gsetup='~/github/koalakid1/toolbox/git/setup-account.sh'
+
+# 필수 도구 설치 확인 (ssh-keygen, gpg, git)
+alias ginstall='~/github/koalakid1/toolbox/git/install-required-tools.sh'
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 # S3cmd 설정 관리

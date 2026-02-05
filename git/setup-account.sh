@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # GitHub 계정 설정 자동화 스크립트
 # SSH 키, GPG 키, Git 설정을 자동으로 생성합니다.

@@ -134,7 +134,7 @@ EOF
         # 키 비밀번호 없음
         script_file="$script_dir/$profile_name.sh"
         cat > "$script_file" <<'SCRIPT'
-#!/usr/local/bin/bash
+#!/usr/bin/env bash
 ssh -p PORT -i KEY_PATH USERNAME@SERVER
 SCRIPT
         # 변수 치환

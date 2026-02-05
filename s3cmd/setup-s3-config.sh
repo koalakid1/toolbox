@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # S3 설정 생성 스크립트
 # 사용법: ./setup-s3-config.sh

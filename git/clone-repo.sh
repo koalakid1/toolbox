@@ -1,4 +1,4 @@
-#!/usr/local/bin/bash
+#!/usr/bin/env bash
 
 # GitHub 대화형 클론 스크립트
 # 사용법: ./clone-repo.sh

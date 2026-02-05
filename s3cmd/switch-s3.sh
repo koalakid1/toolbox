@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # S3 설정 전환 스크립트 (심볼릭 링크)
 # 사용법: ./switch-s3.sh

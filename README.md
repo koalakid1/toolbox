@@ -4,9 +4,16 @@
 
 ## ⚡ 빠른 시작
 
+### 자동 설치 (권장)
+```bash
+cd {toolbox 경로}
+./setup-toolbox.sh
+```
+
+### 수동 설정
 **~/.zshrc 또는 ~/.bashrc에 추가:**
 ```bash
-source ~/github/koalakid1/toolbox/.aliases
+source {toolbox 경로}/.aliases
 ```
 
 **적용:**
@@ -14,18 +21,25 @@ source ~/github/koalakid1/toolbox/.aliases
 source ~/.zshrc  # 또는 source ~/.bashrc
 ```
 
-**사용 가능한 명령어:**
+### 사용 가능한 명령어
 ```bash
+# Toolbox 설정
+toolbox       # 설치 스크립트 다시 실행
+
 # Git
-gclone       # GitHub 레포지토리 클론
-gsetup       # GitHub 계정 설정
+gclone        # GitHub 레포지토리 클론
+gsetup        # GitHub 계정 설정
+ginstall      # 필수 도구 설치
 
 # S3
-s3setup      # S3 설정 생성
-s3switch     # S3 설정 전환
-s3list       # S3 설정 목록
-s3rm         # S3 설정 삭제
-s3current    # 현재 활성 설정
+s3setup       # S3 설정 생성
+s3switch      # S3 설정 전환
+s3list        # S3 설정 목록
+s3rm          # S3 설정 삭제
+s3current     # 현재 활성 설정
+
+# iTerm2
+issh          # SSH Profile 자동 생성
 ```
 
 ---
@@ -59,6 +73,8 @@ GitHub 멀티 계정 관리 및 레포지토리 자동 클론 도구
 ```
 toolbox/
 ├── README.md               # 이 파일
+├── setup-toolbox.sh        # 자동 설치 스크립트
+├── .aliases                # 통합 aliases
 ├── CLAUDE.md               # 자동 프롬프팅 (toolbox 전용)
 ├── .claude/                # toolbox 설정 및 규칙
 │   └── info/               # 상세 규칙
@@ -76,6 +92,11 @@ toolbox/
 │   ├── *.sh                # 스크립트
 │   ├── *.claude.md         # 기술 문서
 │   └── *.md                # 사용자 가이드
+├── s3cmd/                  # S3cmd 설정 관리
+│   └── *.sh                # S3 설정 스크립트
+├── iterm2/                 # iTerm2 SSH Profile 자동 생성
+│   ├── *.sh                # SSH Profile 생성 스크립트
+│   └── backups/            # iTerm2 설정 백업
 └── ...                     # 향후 추가될 도구들
 ```
 
