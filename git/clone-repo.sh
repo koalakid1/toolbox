@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/local/bin/bash
 
 # GitHub 대화형 클론 스크립트
 # 사용법: ./clone-repo.sh
@@ -290,7 +290,9 @@ while true; do
 
                 cd "$target_dir" || continue
 
-                if git clone "git@github.com:$selected_repo.git" 2>&1 | grep -v "Cloning into"; then
+                # git clone 실행 (종료 코드 직접 확인)
+                git clone "git@github.com:$selected_repo.git" > /dev/null 2>&1
+                if [ $? -eq 0 ]; then
                     echo "✅ $selected_repo 클론 완료!"
                     ((success_count++))
 
@@ -307,9 +309,9 @@ while true; do
             # 8. 결과 요약
             echo "========================================"
             echo "📊 클론 완료!"
-            echo "   ✅ 성공: $success_count개"
+            echo "   ✅ 성공: ${success_count}개"
             if [ $fail_count -gt 0 ]; then
-                echo "   ❌ 실패: $fail_count개"
+                echo "   ❌ 실패: ${fail_count}개"
             fi
             echo ""
             echo "📂 디렉토리: $base_dir"

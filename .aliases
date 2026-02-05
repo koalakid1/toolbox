@@ -30,3 +30,10 @@ alias s3rm='~/github/koalakid1/toolbox/s3cmd/remove-s3-config.sh'
 
 # 현재 활성 S3 설정 확인
 alias s3current='if [ -L ~/.s3cfg ]; then basename $(readlink ~/.s3cfg); else echo "활성 설정 없음"; fi'
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# iTerm2 SSH Profile 관리
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+# SSH Profile 자동 생성 (Password/PEM Key 지원)
+alias issh='~/github/koalakid1/toolbox/iterm2/setup-ssh-profile.sh'
